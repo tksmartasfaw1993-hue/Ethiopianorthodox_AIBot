@@ -3,9 +3,9 @@ def train_and_build_db():
     
     # 1. የጠየቅካቸው ሁሉም የኦርቶዶክስ ተዋሕዶ ድኅረ ገጾች ዝርዝር
     web_articles = [
-        "https://etartmedia.com",             # የኢቲ አርት ሚዲያ (ET Art Media) ድኅረ ገጽ
+        "https://etartmedia.com",             # የኢቲ አርት ሚዲያ ድኅረ ገጽ
         "https://tewahedomediacenter.org",    # የተዋሕዶ ሚዲያ ማዕከል ድኅረ ገጽ
-        "https://debelo.org",                 # የደበሎ (Debelo) ዋና ድኅረ ገጽ
+        "https://debelo.org",                 # የደበሎ ዋና ድኅረ ገጽ
         "https://eotcmk.org",               # የማኅበረ ቅዱሳን ዋና ድኅረ ገጽ
         "https://eotcmk.org",           # የሐመር መጽሔት ገጽ
         "https://ethiopianorthodox.org"  # የEOTC ይፋዊ ገጽ
@@ -19,14 +19,14 @@ def train_and_build_db():
         except Exception as e:
             print(f"የድረገጽ ስህተት ({web_url}): {e}")
 
-    # 2. የሰጠኸኝ 3ቱ ትክክለኛ የዩቲዩብ ቪዲዮዎች (የአባ ገብረኪዳን ቪዲዮን ጨምሮ)
+    # 2. ሦስቱ ትክክለኛ የዩቲዩብ ቪዲዮዎች (የአባ ገብረኪዳን ቪዲዮን ጨምሮ)
     youtube_videos = [
         "https://youtube.com",
         "https://youtube.com",
-        "https://youtube.com"  # አንተ የሰጠኸኝ የአባ ገብረኪዳን ቪዲዮ ሙሉ ሊንክ
+        "https://youtube.com"  # የአባ ገብረኪዳን ስብከት ቪዲዮ
     ]
     
-    # የዩቲዩብ ቪዲዮዎችን ጽሑፍ (Transcript) አንድ በአንድ በYoutubeLoader መጫን
+    # የዩቲዩብ ቪዲዮዎችን ጽሑፍ (Transcript) አንድ በአንድ መጫን
     for video_url in youtube_videos:
         try:
             loader = YoutubeLoader.from_youtube_url(video_url, add_video_info=False)
@@ -43,4 +43,4 @@ def train_and_build_db():
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=100)
     docs = text_splitter.split_documents(all_documents)
     
-    # ማሳሰቢያ፦ ከዚህ በታች የእርስዎ የChroma/FAISS ቬክተር ዳታቤዝ (Vector Database) ግንባታ ኮድ ይቀጥላል...
+    # ማሳሰቢያ፦ ከዚህ በታች የእርስዎ የChroma/FAISS ቬክተር ዳታቤዝ ግንባታ ኮድ ይቀጥላል...
