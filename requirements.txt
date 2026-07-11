@@ -7,3 +7,4 @@ groq
 chromadb
 pypdf
 streamlit
+langchain-huggingface
