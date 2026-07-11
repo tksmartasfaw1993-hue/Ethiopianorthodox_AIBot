@@ -8,3 +8,5 @@ chromadb
 pypdf
 streamlit
 langchain-huggingface
+beautifulsoup4
+youtube-transcript-ap
