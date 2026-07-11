@@ -104,19 +104,23 @@ def get_ai_response(user_query: str):
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+# 4. የStreamlit ቻት ኢንተርፌስ (Chat UI)
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
 # የቆዩ መልዕክቶችን በስክሪኑ ላይ ማሳያ
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# አዲስ ጥያቄ ሲጠየቅ (ይህ መስመር ከ 'if "messages"' እና 'for' ጋር እኩል መነሻ መስመር ላይ መሆን አለበት)
+# 🔥 FIXED: This block must be outside the for loop (aligned with the 'for' statement)
 if user_input := st.chat_input("ጥያቄዎን እዚህ ይጻፉ..."):
     with st.chat_message("user"):
         st.markdown(user_input)
     st.session_state.messages.append({"role": "user", "content": user_input})
-
+    
     with st.chat_message("assistant"):
         with st.spinner("በመፈለግ ላይ..."):
             reply = get_ai_response(user_input)
-            st.markdown(reply)
-    st.session_state.messages.append({"role": "assistant", "content": reply})
+        st.markdown(reply)
+        st.session_state.messages.append({"role": "assistant", "content": reply})
