@@ -2,6 +2,8 @@ fastapi
 pydantic
 langchain
 langchain-community
+langchain-groq
+groq
 chromadb
 pypdf
 streamlit
